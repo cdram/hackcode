@@ -22,13 +22,6 @@ public class Solution {
         
     
     public void flatten(TreeNode root) {
-        if(root == null) return;
-        TreeNode right = root.right;
-        
-        root.right = flattenHelper(root.left);
-        root.left = null;
-        TreeNode n = root;
-        while(n.right != null) n = n.right;
-        n.right = flattenHelper(right);
+        flattenHelper(root.left);
     }
 }
