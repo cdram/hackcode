@@ -28,7 +28,7 @@ class SingleSell{
 	
 	public static void main(String args[]){
 		int [] arr = { 2, 7, 1, 8, 2, 8, 4, 5, 9, 0, 4, 5};
-		System.out.println("Index of 6 " + performSingleSell(arr));
+		System.out.println("Best Profit " + performSingleSell(arr));
 	}
 		
 	
