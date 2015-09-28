@@ -1,6 +1,7 @@
 # HackCode
 
 Solutions for general problems in Data Structures and Algoritms.
+All of the solutions are implemented in Java.
 
 Topics Covered
 --------------
