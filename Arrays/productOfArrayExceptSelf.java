@@ -9,6 +9,7 @@ public class Solution {
     public int[] productExceptSelf(int[] nums) {
         if(nums == null || nums.length == 1) return nums;
         int[] output = new int[nums.length];
+		int temp = 1;
         
 		//fill the output array in after products, ie, ith location is the product of all numbers (i+1 to array.length-1)
         output[nums.length-1] = nums[nums.length-1];
@@ -16,21 +17,21 @@ public class Solution {
             output[i] = nums[i]*output[i+1];
         }
         
-		//fill the input array with before product, ie. ith location is the product of all numbers (0 to i-1)
-        for(int i=1;i<nums.length;i++){
-            nums[i] = nums[i]*nums[i-1];
-        }
         
 		//set the first number of output to the first location of output array (as its the product of all the after products)
         output[0] = output[1];
 		
+		//update temp with the value of the first element of input array
+		temp = temp * nums[0];
+		
 		//figure out the products of all numbers other than the last one ith element  = (input[i-1]*output[i+1])
         for(int i=1;i<nums.length-1;i++){
-            output[i] = nums[i-1]*output[i+1];
+			output[i] = temp * output[i+1];
+			temp = temp * nums[i];
         }
 		
 		//last element will the before product from the input array
-        output[nums.length-1] = nums[nums.length-2];
+        output[nums.length-1] = temp;
         
 		//return the output array
         return output;        
