@@ -26,6 +26,24 @@ class SegmentTree{
 		}
 	}
 	
+	public void updateHelper(int nodeToUpdate, int valueToUpdate, int node, int left, int right){
+		if(left == right){
+			segment[left] = input[left];
+			if(nodeToUpdate == left) segment[node] = input[left] = valueToUpdate;
+		}else{
+			updateHelper(nodeToUpdate, valueToUpdate, 2*node, left, (left+right)/2);
+			updateHelper(nodeToUpdate, valueToUpdate, (2*node)+1, ((left+right)/2)+1, right);
+			int leftValue = segment[2*node];
+			int rightValue = segment[(2*node)+1];
+			segment[node] = (leftValue >= rightValue)?leftValue:rightValue;
+		}
+		
+	}
+	
+	public void update(int nodeToUpdate, int valueToUpdate){
+		updateHelper(nodeToUpdate, valueToUpdate, 1,0,input.length-1);
+	}
+	
 	private int queryHelper(int node, int start, int end, int qStart, int qEnd){
 		System.out.println("Node => " + node);
 		System.out.println("Start => " + start + " End => " + end);
@@ -57,6 +75,10 @@ class SegmentTree{
 	public void printSegmentTree(){
 		System.out.println(Arrays.toString(segment));
 	}
+
+	public void printInputArray(){
+		System.out.println(Arrays.toString(input));
+	}
 	
 	
 	public static void main(String[] args){
@@ -71,8 +93,10 @@ class SegmentTree{
 		sTree.build(1,0,arr.length-1);
 		sTree.printSegmentTree();	
 		System.out.format("Max Number between the range %d - %d : %d \n", 2,4,sTree.query(2,4));
-		// System.out.println(sTree.query(0,5));
-		// System.out.println(sTree.query(1,3));
+		sTree.update(3,arr[3]+1220);
+		sTree.printInputArray();
+		sTree.printSegmentTree();			
+		System.out.format("Max Number between the range %d - %d : %d \n", 2,4,sTree.query(2,4));
 			
 		
 	}
