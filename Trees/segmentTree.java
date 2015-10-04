@@ -27,28 +27,31 @@ class SegmentTree{
 	}
 	
 	private int queryHelper(int node, int start, int end, int qStart, int qEnd){
-		if(qStart > end || qEnd < start) return -1;
+		System.out.println("Node => " + node);
+		System.out.println("Start => " + start + " End => " + end);
+		if(qStart > end || qEnd < start) {
+			System.out.println("Out of Bounds => " + start +" : " + end);
+			return -1;
+		}
 		
 		if(qStart <= start && qEnd >= end){
+			System.out.println("Within Bounds => "  + start +" : " + end);
 			return segment[node];
 		}
 		
 		int half = (start+end)/2;
-		System.out.println("Node => " + node);
 		int leftMax = queryHelper(2*node, start, half, qStart, qEnd);
 		int rightMax = queryHelper(2*node+1, half+1, end, qStart, qEnd);
-		
-		if(leftMax == -1) return rightMax;
-		if(rightMax == -1) return leftMax;
-		
-		System.out.println("Start => " + start + " End => " + end);
+				
 		System.out.println("LeftMax => " + leftMax + " RightMax => " + rightMax);
 		
+		if(leftMax == -1) return rightMax;
+		if(rightMax == -1) return leftMax;				
 		return (leftMax>rightMax)?leftMax:rightMax;		
 	}
 	
 	public int query(int start, int end){
-		return queryHelper(1, 0, input.length, start, end);
+		return queryHelper(1, 0, input.length-1, start, end);
 	}
 	
 	public void printSegmentTree(){
@@ -67,7 +70,7 @@ class SegmentTree{
 		System.out.println(Arrays.toString(arr));
 		sTree.build(1,0,arr.length-1);
 		sTree.printSegmentTree();	
-		System.out.println(sTree.query(2,4));
+		System.out.format("Max Number between the range %d - %d : %d \n", 2,4,sTree.query(2,4));
 		// System.out.println(sTree.query(0,5));
 		// System.out.println(sTree.query(1,3));
 			
