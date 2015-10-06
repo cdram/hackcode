@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-
+//Segment Trees are used to store values of an interval
 
 class SegmentTree{
 	

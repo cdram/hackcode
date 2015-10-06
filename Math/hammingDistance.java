@@ -13,12 +13,24 @@ class Hamming{
      }
 	 return binary;
   }
+  
+  public static int hammingWeight(long n) {
+         if(n==0) return 0;
+        
+         int counter = 0;
+         while(n > 0){
+             if(n%2 == 1) counter = counter+1;
+             n = n/2;
+         }
+        
+         return counter;
+  }
  
   public static void main(String a[]){
 	  int num1 = 7;
 	  int num2 = 12;
 	  int hamming = 0;
-	  
+	  //convert the numbers into binar
 	  int[] numB1 = convertBinary(num1);
 	  int[] numB2 = convertBinary(num2);
 	
@@ -37,8 +49,8 @@ class Hamming{
 	  
 	  System.out.println();
 	 
-	  System.out.println("Hamming Distance => " + hamming);	  
+	  // System.out.println("Hamming Distance => " + hamming);
+	  System.out.println("Hamming weight => " + hammingWeight(2147483648L));
   }
-  
   
 }
