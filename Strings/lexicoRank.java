@@ -6,6 +6,7 @@ import java.io.*;
 
 class LexicoRank{	
 	
+	//compute the factorial
 	private static int fact(int input){
 		int output = 1;
 		for(int i = 2;i<=input;i++){
@@ -14,6 +15,7 @@ class LexicoRank{
 		return output;
 	}
 	
+	//helper method to fill the character Count Array
 	private static int[] fillArray(int[] charCount, String input){
 		Arrays.fill(charCount, 0);
 		for(Character c: input.toCharArray()){
@@ -64,7 +66,7 @@ class LexicoRank{
 	
 	
 	public static void main(String[] args){
-		String[] inputs = {"string", "baa"};				
+		String[] inputs = {"string", "baa", "caab"};				
 		for(String input: inputs) System.out.format("\nThe Lexicographic Rank of '%s' : %d \n\n", input, getRank(input));
 	}
 }
