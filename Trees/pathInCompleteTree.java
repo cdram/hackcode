@@ -1,3 +1,18 @@
+/***
+
+Classical Min/Max Heaps are typically represented using arrays, since they’re complete trees. Imagine, though, that you’re using a Min-Heap represented using nodes. If you know the number of nodes already in the Min-Heap, write an algorithm to describe the path to the next open spot. For example, given the following Min-Heap:
+
+          5
+        /   \
+      8      10
+     / \    /  \
+   12   9  13  20
+  /  \
+ 18  15
+You can get to the next open spot by going left-right-left from the root (i.e., to the left of the 9). If you know that there are nine elements in the tree, you should be able to come up with this path deterministically, without resorting to searching the tree, doing BFS, etc. Write that algorithm
+
+***/
+
 import java.io.*;
 import java.util.*;
 
