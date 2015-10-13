@@ -100,8 +100,31 @@ class BinarySearchTree{
 		formHDMap(root, 0);
 		System.out.println(map);		
 	}
+    
+    public void remove(int val){
+        remove(root, val);
+    }
+    
+    
+    private Node remove(Node node, int val){
+        if(node == null) return node;
+        else if(node.data < val) node.right = remove(node.right, val);
+        else if(node.data > val) node.left = remove(node.left, val);
+        else if(node.left != null && node.right != null) {
+            node.data = findMinimum(node.right).data;
+            node.right = remove(node.right, node.data);
+        }else{
+            node= (node.left!=null)?node.left:node.right;
+        }
+        return node;
+    }
 	
-
+    private Node findMinimum(Node node){
+        if(node == null) return null;
+        else if(node.left == null) return node;
+        else return findMinimum(node.left);
+    }
+    
 	
 }
 
@@ -113,6 +136,7 @@ class BST{
 		bst.insert(7);
 		bst.insert(2);
 		bst.insert(4);
+        
 		System.out.println("In Order");
 		bst.inOrder(bst.root);
 		System.out.println("\n\nPre Order");
@@ -125,6 +149,15 @@ class BST{
 		System.out.println(bst.getMax());
 		System.out.println("\n\nVertical");
 		bst.printVertical();
+        
+        System.out.println("\n\nRemoving 3");
+        bst.remove(3);
+        System.out.println("In Order");
+        bst.inOrder(bst.root);
+        System.out.println("Removing 6");
+        bst.remove(6);
+        System.out.println("In Order");
+        bst.inOrder(bst.root);
 				
 	}
 }
