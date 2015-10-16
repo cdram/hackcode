@@ -20,7 +20,7 @@ class Score{
 	
 	@Override
 	public String toString(){
-		return ("sat: " + sat + " gpa: " + gpa);
+		return ("SAT: " + sat + " GPA: " + gpa);
 	}
 }
 
