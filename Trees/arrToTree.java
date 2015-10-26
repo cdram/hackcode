@@ -13,7 +13,6 @@
 import java.util.*;
 import java.io.*;
 
-
 class Node{
 	int val;
 	Node left;
@@ -26,9 +25,7 @@ class Node{
 	}
 }
 
-
-class ArrToTree{
-	
+class ArrToTree{	
 	
 	private static Node convertArrayToTree(int[] arr){
 		Queue<Node> q = new LinkedList<Node>();
@@ -46,8 +43,6 @@ class ArrToTree{
 			if((2*count)+2 < arr.length-1){
 				n.right = new Node(arr[(2*count)+2]);
 				q.add(n.right);
-			}else{
-				break;
 			}
 			count = count + 1;	
 		}
