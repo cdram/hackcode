@@ -25,24 +25,22 @@ public class Solution {
             if(!map.containsKey(head)){
                 helper(head, map);
             }
+            
             if(head.next != null && !map.containsKey(head.next)){
                 helper(head.next, map);
+                map.get(head).next = map.get(head.next);
+            }else if(head.next != null){
+                map.get(head).next = map.get(head.next);
             }
+                
+            
             if(head.random !=null && !map.containsKey(head.random)){
                 helper(head.random, map);
-            }
-            
-            if(head.next != null){
-                map.get(head).next = map.get(head.next);    
-            }else{
-                map.get(head).next = null;
-            }
-            
-            if(head.random != null){
                 map.get(head).random = map.get(head.random);
-            }else{
-                map.get(head).random = null;
+            }else if(head.random !=null){
+                map.get(head).random = map.get(head.random);
             }
+            
             head = head.next;
         }
         
