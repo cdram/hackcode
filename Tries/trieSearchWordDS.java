@@ -87,8 +87,7 @@ public class WordDictionary {
         Character c = pattern.charAt(counter);
         if(c == '.'){
             for(Character ch: node.children.keySet()){
-                Boolean temp = searchPattern(node.children.get(ch), pattern, counter+1);
-                if(temp) return temp;
+                if(searchPattern(node.children.get(ch), pattern, counter+1)) return true;
             }
         }else if(c != '.' && node.children.containsKey(c)) {
             return searchPattern(node.children.get(c), pattern, counter+1);
